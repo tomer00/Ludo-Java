@@ -1,5 +1,13 @@
+import javax.swing.*;
+
 public class Ludo {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        GuiMenu menu = new GuiMenu();
+        menu.setIconImage(new ImageIcon(Utils.path+"ludoLogo.png").getImage());
+        menu.setSize(800,600);
+        menu.setTitle("Ludo by Himanshu Tomer");
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+        menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 }
