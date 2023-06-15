@@ -1,12 +1,7 @@
 import ui.SelectionView;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.KeyboardFocusManager;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
@@ -98,19 +93,19 @@ public class GuiMenu extends JFrame {
             selG.setFocus();
             selB.setFocus();
 
-            Image[] avatarImgs = new Image[4];
-            avatarImgs[0] = selR.avatar;
-            avatarImgs[1] = selG.avatar;
-            avatarImgs[2] = selY.avatar;
-            avatarImgs[3] = selB.avatar;
+            Image[] avatarImg = new Image[4];
+            avatarImg[0] = selR.avatar;
+            avatarImg[1] = selG.avatar;
+            avatarImg[2] = selY.avatar;
+            avatarImg[3] = selB.avatar;
 
-            startGame();
+            startGame(names, avatarImg);
 
         });
 
 
-        KeyboardFocusManager kbfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        kbfm.addKeyEventDispatcher(e -> {
+        KeyboardFocusManager bfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        bfm.addKeyEventDispatcher(e -> {
             if (e.getID() == KeyEvent.KEY_PRESSED) {
                 if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
                     addNameChar(e.getKeyChar());
@@ -134,8 +129,14 @@ public class GuiMenu extends JFrame {
 
     //endregion :: INIT---
 
-    private void startGame() {
-        //TODO starting new Game Activity
+    private void startGame(String[] names, Image[] avatarImg) {
+        ActivityLudo first = new ActivityLudo(playing, names, avatarImg);
+        first.setSize(1040, 800);
+        first.setTitle("Simple Ludo by Himanshu...");
+        first.setIconImage(new ImageIcon(Utils.path + "ludo.png").getImage());
+        first.setVisible(true);
+        first.setLocationRelativeTo(null);
+        first.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     private void checkPlayers(SelectionView s, int pos) {

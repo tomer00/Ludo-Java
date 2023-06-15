@@ -19,7 +19,7 @@ public class SelectionView extends JComponent {
     private final Image prevImg;
     private final Point iniPoint = new Point(0, 0);
 
-    private final Rect[] rects = new Rect[4];
+    private final Rect[] buttons = new Rect[4];
     public String name;
 
     public boolean isComp, isPlayer = true, isNot;
@@ -31,26 +31,26 @@ public class SelectionView extends JComponent {
 
     //region :: INIT_____
 
-    public SelectionView(Color col, Image[] asseta, Image avatar, FocusTeller teller) {
+    public SelectionView(Color col, Image[] assets, Image avatar, FocusTeller teller) {
         hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         this.color = col;
-        this.assets = asseta;
+        this.assets = assets;
         this.focusTeller = teller;
         this.avatar = avatar;
         this.prevImg = avatar;
 
         this.font = new Font("Ubuntu", Font.PLAIN, 22);
         for (int i = 0; i < 4; i++) {
-            rects[i] = new Rect();
+            buttons[i] = new Rect();
         }
 
-        rects[0].setRect(20, 200, 40); // rect person
-        rects[1].setRect(80, 200, 40); // rect robot
-        rects[2].setRect(140, 200, 40); //rect cross
-        rects[3].top = 260;
-        rects[3].left = 20;
-        rects[3].bottom = 300;
-        rects[3].right = 180;
+        buttons[0].setRect(20, 200, 40); // rect person
+        buttons[1].setRect(80, 200, 40); // rect robot
+        buttons[2].setRect(140, 200, 40); //rect cross
+        buttons[3].top = 260;
+        buttons[3].left = 20;
+        buttons[3].bottom = 300;
+        buttons[3].right = 180;
 
 
         this.addMouseListener(new MouseAdapter() {
@@ -59,7 +59,7 @@ public class SelectionView extends JComponent {
                 super.mouseClicked(e);
 
                 for (byte i = 0; i < 4; i++) {
-                    if (rects[i].contains(e.getX() - iniPoint.x, e.getY() - iniPoint.y)) {
+                    if (buttons[i].contains(e.getX() - iniPoint.x, e.getY() - iniPoint.y)) {
                         switch (i) {
                             case 0 -> {
                                 isPlayer = true;
