@@ -1,3 +1,3 @@
 public class Utils {
-    public static final String path = "/home/tom/IdeaProjects/Ludo-Java/src/asset/";
+    public static final String path = "{your-project-directory}/src/asset/";
 }
